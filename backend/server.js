@@ -143,7 +143,7 @@ const server = app.listen(PORT, console.log(`Server Started at PORT ${PORT}`.yel
 const io = require('socket.io')(server, {
     pingTimeout: 60000,
     cors: {
-        origin: "*", // Adjust as needed
+        origin: "wss://localhost:3000", // Adjust as needed
         methods: ["GET", "POST"]
     }
 });
