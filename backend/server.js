@@ -106,12 +106,15 @@ const userRoutes = require("./routes/userRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+var cors = require('cors')
 
 dotenv.config();
 
 connectDB();
 const app = express();
 
+
+app.use(cors())
 app.use(express.json());
 
 app.use('/api/user', userRoutes);
@@ -143,7 +146,7 @@ const server = app.listen(PORT, console.log(`Server Started at PORT ${PORT}`.yel
 const io = require('socket.io')(server, {
     pingTimeout: 60000,
     cors: {
-        origin: "wss://localhost:3000", // Adjust as needed
+        origin: "http://localhost:3000", // Adjust as needed
         methods: ["GET", "POST"]
     }
 });
